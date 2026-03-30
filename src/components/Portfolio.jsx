@@ -1,90 +1,90 @@
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import React from 'react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import aakrithiOriginal from '../assets/aakrithi_original.png';
 
 const Portfolio = () => {
   const projects = [
     {
-      title: 'Aurum Travel',
-      category: 'E-commerce / Luxury',
-      image: '/portfolio_1.png',
-      description: 'A premium travel booking platform with glassmorphism UI and immersive imagery.',
-    },
-    {
-      title: 'Terra Furniture',
-      category: 'Minimalist Store',
-      image: '/portfolio_2.png',
-      description: 'Clean, elegant e-commerce experience for a high-end furniture brand.',
-    },
-    {
-      title: 'Crypto Pulse',
-      category: 'SaaS Dashboard',
-      image: '/portfolio_3.png',
-      description: 'Futuristic data visualization platform for cryptocurrency analytics.',
-    },
+      title: 'Aakrithi Clothings',
+      category: 'E-commerce / Handloom',
+      image: aakrithiOriginal,
+      url: 'https://aakrithiclothings.in',
+      description: 'A sovereign digital commerce platform engineered for a luxury handloom brand. Focus on architectural precision, high-performance rendering, and an elite "Quiet Luxury" aesthetic.',
+    }
   ];
 
   return (
-    <section id="portfolio" className="relative min-h-screen flex flex-col justify-center pt-32 pb-20">
-      <div className="container">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-2xl">
-            <motion.h2
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold mb-4"
-            >
-              Featured <span className="text-gradient">Projects</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="subtitle"
-            >
-              Explore our latest work where creativity meets precision. We build digital products that make an impact.
-            </motion.p>
+    <section id="portfolio" className="bg-white py-16 md:py-32 lg:py-48 relative overflow-hidden scroll-mt-24">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        
+        {/* Simplified Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 lg:mb-32 gap-8 md:gap-12">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
+               <div className="h-[1px] w-8 md:w-12 bg-slate-200" />
+               <span className="text-[10px] font-black uppercase tracking-[0.8em] text-slate-400">Featured Exhibit</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold text-slate-900 leading-[1] md:leading-[0.9] tracking-tighter">
+              Case <span className="editorial-heading italic font-light text-slate-400">Study</span>.
+            </h2>
           </div>
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="btn btn-outline"
-          >
-            See All Work
-          </motion.button>
+          <div className="flex flex-col items-start md:items-end w-full md:w-auto">
+             <p className="text-slate-500 text-sm font-black uppercase tracking-[0.3em] mb-4">SELECTED_WORK_2026</p>
+             <div className="h-[1px] w-full md:w-32 bg-slate-100" />
+          </div>
         </div>
 
-        <div className="grid grid-3">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/5] glass border-white/5"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90 transition-opacity" />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <span className="text-cyan-400 text-sm font-semibold mb-2" style={{ marginInline: '1.5rem' }}>{project.category}</span>
-                <h3 className="text-2xl font-bold mb-3 text-white" style={{ marginInline: '1.5rem' }}>{project.title}</h3>
-                <p className="text-gray-300 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ marginInline: '1.5rem' }}>
+        {/* Single Premium Project Exhibit */}
+        {projects.map((project, index) => (
+          <div key={index} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            
+            {/* Massive Image Exhibit */}
+            <div className="lg:col-span-7">
+              <div className="relative group overflow-hidden bg-slate-50 rounded-sm border border-slate-100 p-4 md:p-8 lg:p-20">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto object-cover filter drop-shadow-[0_10px_30px_rgba(15,23,42,0.1)] md:drop-shadow-[0_30px_60px_rgba(15,23,42,0.1)] transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+
+            {/* Detailed Brief */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="mb-10 md:mb-12">
+                <span className="text-[10px] font-black uppercase tracking-[0.6em] text-cyan-500 mb-4 md:mb-6 block">
+                  {project.category}
+                </span>
+                <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold text-slate-900 mb-6 md:mb-8 tracking-tighter leading-[1] md:leading-none">
+                  Aakrithi <br />
+                  <span className="editorial-heading italic font-light text-slate-400">Clothings</span>
+                </h3>
+                <p className="text-slate-500 text-lg md:text-xl leading-relaxed font-light mb-8 md:mb-12 max-w-md">
                   {project.description}
                 </p>
-                <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-white group/link" style={{ marginInline: '1.5rem' }}>
-                  View Case Study <ExternalLink size={16} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                </a>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              <div className="flex flex-col gap-6 md:gap-8">
+                <a 
+                  href={project.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-4 md:gap-6 text-slate-900 text-xs font-black uppercase tracking-[0.5em] transition-colors hover:text-cyan-600 w-fit"
+                >
+                  <span className="pb-1 border-b border-slate-200 group-hover:border-cyan-500">Visit Platform</span>
+                  <ExternalLink size={14} className="opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                </a>
+
+                <div className="flex items-center gap-4 py-6 md:py-8 border-t border-slate-100 mt-2 md:mt-4">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 text-wrap leading-relaxed">Live Production System</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        ))}
+
       </div>
     </section>
   );

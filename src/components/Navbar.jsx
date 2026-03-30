@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import logo from "../assets/logo.png";
 
@@ -26,77 +25,67 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 flex items-center ${
-        scrolled ? "glass h-24" : "bg-transparent h-32"
+        scrolled ? "bg-white shadow-sm h-16" : "bg-transparent h-20"
       }`}
     >
       <div className="container flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold flex items-center gap-1">
+        <a href="#" className="text-xl font-bold flex items-center gap-1">
           <img 
             src={logo} 
             alt="Aries" 
-            className={`transition-all duration-300 ${scrolled ? "h-16" : "h-24"}`}
+            className={`transition-all duration-300 ${scrolled ? "h-10" : "h-12"}`}
           />
-          <div className="pt-2">
+          <div className="pt-1">
             <span className="text-gradient">Aries</span>
-            <span className="text-text-primary">webs</span>
+            <span className={`font-bold transition-colors ${scrolled ? 'text-slate-900' : 'text-white'}`}>webs</span>
           </div>
         </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <motion.a
+            <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-text-primary relative"
-              whileHover={{ scale: 1.1, color: "#60a5fa" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.1 }}
+              className={`text-xs font-black uppercase tracking-[0.3em] transition-all ${scrolled ? 'text-slate-900 hover:text-cyan-600' : 'text-white hover:opacity-80'}`}
             >
               {link.name}
-            </motion.a>
+            </a>
           ))}
-          <button className="btn btn-primary btn-sm ml-6">
-            Get Started
+          <button className={`btn btn-sm ml-6 px-6 py-2 rounded-none border text-[10px] font-black tracking-[0.4em] transition-all duration-300 ${scrolled ? 'bg-slate-900 text-white hover:bg-black border-slate-900' : 'btn-primary border-white/10'}`}>
+            BRIEF_US
           </button>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-primary"
+          className={`md:hidden transition-colors ${scrolled ? 'text-slate-900' : 'text-white hover:text-cyan-400'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass overflow-hidden"
-          >
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-lg font-medium hover:text-primary transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <button className="btn btn-primary w-full justify-center">
-                Get Started <ArrowRight size={18} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-md border-t border-white/5">
+          <div className="flex flex-col p-8 gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-black uppercase tracking-[0.4em] text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <button className="btn w-full justify-center rounded-none font-black tracking-[0.4em] bg-white text-black hover:bg-slate-200 transition-colors">
+              BRIEF_US
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
