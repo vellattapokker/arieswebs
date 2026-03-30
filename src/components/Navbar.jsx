@@ -68,19 +68,19 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-md border-t border-white/5">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-t border-slate-100 shadow-xl">
           <div className="flex flex-col p-8 gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-black uppercase tracking-[0.4em] text-white"
+                className="text-sm font-black uppercase tracking-[0.4em] text-slate-900 hover:text-cyan-600 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </a>
             ))}
-            <button className="btn w-full justify-center rounded-none font-black tracking-[0.4em] bg-white text-black hover:bg-slate-200 transition-colors">
+            <button className="btn w-full justify-center rounded-none font-black tracking-[0.4em] bg-slate-900 text-white hover:bg-black transition-colors">
               BRIEF_US
             </button>
           </div>

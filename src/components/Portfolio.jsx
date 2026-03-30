@@ -64,7 +64,7 @@ const Portfolio = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-6 md:gap-8">
+              <div className="flex flex-col gap-6 md:gap-8 mt-10 md:mt-0">
                 <a 
                   href={project.url} 
                   target="_blank" 
